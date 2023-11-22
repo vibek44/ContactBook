@@ -1,5 +1,5 @@
-const Person=({person,text,handleRemove})=><div>
+const Person=({person,text,handleRemove})=>
   <p>{person.name} {person.number} <button onClick={handleRemove}>{text}</button></p>
-</div>
+
 
 export default Person
