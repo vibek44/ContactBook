@@ -1,5 +1,3 @@
-const Notification=({search,handleSearch})=><>
-<label>Search </label><input type='text' value={search} onChange={handleSearch}/>
-</>
+const Notification=({message})=><p>{ message } </p>
 
 export default Notification;
