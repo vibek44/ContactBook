@@ -32,6 +32,7 @@ const App=()=> {
     e.preventDefault()
     const name=newName.trim()
     const number=newNumber.trim()
+    
     if(name && number){
       const result=persons.find(person=>person.name.toLowerCase()===name.toLowerCase())  
       if(result){
@@ -45,7 +46,6 @@ const App=()=> {
         ContactService
         .create(createdPerson)
         .then(resData=>{
-          
           setPersons(persons.concat(resData))
           setNewName('')
           setNewNumber('')
@@ -60,7 +60,7 @@ const App=()=> {
   }
 
   const handleRemove=(id)=>{
-    
+    console.log(typeof id );
     const removePerson=peopleToShow.find(person=>person.id===id)
     confirm(`Delete ${removePerson.name}`)
     ContactService
@@ -77,8 +77,7 @@ const App=()=> {
   }
  
   return (
-    <>
-      <h2>ContactBook</h2>
+    <div className='main-container'>
       {(message.errormsg||message.successmsg) && <Notification message={message} />}
       <label>Search: <input type='text' search={search} onChange={handleSearch}/></label>
       <h3>Add new Contact</h3>
@@ -92,7 +91,7 @@ const App=()=> {
       }
       
       
-    </>  
+    </div>  
   )
 }
 
