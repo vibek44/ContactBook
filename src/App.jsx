@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import ContactForm from './components/ContactForm'
-import Person from './components/Person'
+import Infotable from './components/Infotable'
 import ContactService from './services/Communication'
 import Notification from './components/Notification'
+
 
 const App=()=> {
   const [persons, setPersons] = useState([])
@@ -79,15 +80,18 @@ const App=()=> {
     <>
       <h2>ContactBook</h2>
       {(message.errormsg||message.successmsg) && <Notification message={message} />}
-      <label>Search:</label> <input type='text' search={search} onChange={handleSearch}/>
+      <label>Search: <input type='text' search={search} onChange={handleSearch}/></label>
       <h3>Add new Contact</h3>
       <ContactForm name={newName}  number={newNumber} 
         handleName={handleName} handleNumber={handleNumber}
         handleSubmit={handleSubmit}/>
-      <h2>Numbers</h2>
-      { peopleToShow.map( person=><Person key={person.id} person={person}
-          handleRemove={()=>handleRemove(person.id)} text="delete"/> ) 
+      {
+        (peopleToShow.length > 0) 
+        ? <Infotable  handleRemove={handleRemove} peoples={peopleToShow}/>
+        :<p>No Contacts Found</p>
       }
+      
+      
     </>  
   )
 }
