@@ -1,0 +1,15 @@
+@use './base';
+
+.form-container{
+  
+  fieldset{
+ @include base.display-theme;
+ row-gap: base.$s-size;
+   button{
+    @include base.button-theme;
+    width:40%;
+    margin-left: base.$l-size;
+    
+   }
+  }
+}

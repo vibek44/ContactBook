@@ -1,0 +1,16 @@
+table, tr, th {
+  width: 40%;
+  border-collapse: collapse;
+  border: 0.1em solid black;
+  margin-top: 2.5em;
+}
+table caption, tr caption, th caption {
+  font-size: 2em;
+}
+table td, tr td, th td {
+  padding: 1em;
+  border-collapse: collapse;
+  border: 0.1em solid black;
+}
+
+/*# sourceMappingURL=infotable.css.map */

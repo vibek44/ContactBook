@@ -1,0 +1,11 @@
+@use './base';
+
+.main-container{
+  @include base.display-theme;
+  align-items: center;
+  row-gap:base.$s-size;
+  
+  ;
+  
+  
+}

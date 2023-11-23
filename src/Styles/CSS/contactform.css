@@ -1,0 +1,12 @@
+.form-container fieldset {
+  display: flex;
+  flex-flow: column wrap;
+  row-gap: 1em;
+}
+.form-container fieldset button {
+  border-radius: 0.3em;
+  width: 40%;
+  margin-left: 4.5em;
+}
+
+/*# sourceMappingURL=contactform.css.map */

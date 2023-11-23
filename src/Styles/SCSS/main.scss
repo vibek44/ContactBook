@@ -1,0 +1,11 @@
+@use './base';
+@use './app.scss';
+@use './contactform.scss';
+@use './infotable.scss';
+@use './notification.scss';
+
+body{
+  
+ background-color : base.$primary-color ;
+
+}

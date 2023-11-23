@@ -1,0 +1,16 @@
+@use './base';
+
+table,tr,th {
+     width: 40%;
+     border-collapse: collapse;
+     border:0.1em solid black;
+     margin-top: base.$m-size;
+     caption{
+         font-size:2em;
+        }
+        td{
+          padding: base.$s-size;
+          border-collapse: collapse;
+          border:0.1em solid black;
+        }
+    }
