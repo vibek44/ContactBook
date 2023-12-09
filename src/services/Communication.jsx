@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseurl=`http://localhost:3001/persons`
+const baseurl='/api/persons'
 
 const getAll=()=>{
   const request=axios.get(baseurl)
@@ -28,3 +28,4 @@ export default {
   update,
   remove
 }
+
