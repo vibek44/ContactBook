@@ -19,7 +19,8 @@ const App=()=> {
   useEffect(()=>{
     ContactService
     .getAll()
-    .then(initialPersons=>setPersons(initialPersons))
+    .then(initialPersons=>{
+      setPersons(initialPersons)})
   }
   ,[])
 
@@ -41,6 +42,12 @@ const App=()=> {
         ContactService
         .update(result.id,updatedPerson)
         .then(resData=>setPersons(persons.map(person=>person.id!==resData.id ?person :resData)))
+        .catch(err=>{
+          setMessage({...message,errormsg:err.response.data.error})
+          setTimeout(()=>{
+            setMessage({...message,errormsg:null})
+          },5000)
+        })
       }else{
         const createdPerson={name, number}
         ContactService
@@ -54,9 +61,26 @@ const App=()=> {
             setMessage({...message,successmsg:null})
           }, 5000)
         })
-          
+        .catch(err=>{
+          console.log(err);
+          setMessage({...message,errormsg:err.response.data.error})
+          setTimeout(()=>{
+            setMessage({...message,errormsg:null})
+          },5000)
+        }) 
       }
+    }else{
+      setMessage({...message,errormsg:'Name or number missing'})
+      setTimeout(()=>{
+        setMessage({...message,errormsg:null})
+      },3000)
     }
+  }
+
+  const handleEdit=(id)=>{
+   const result=peopleToShow.find(person=>person.id.toLowerCase().localeCompare(id.toLowerCase())===0)
+   setNewName(result.name)
+   setNewNumber(result.number)
   }
 
   const handleRemove=(id)=>{
@@ -86,7 +110,7 @@ const App=()=> {
         handleSubmit={handleSubmit}/>
       {
         (peopleToShow.length > 0) 
-        ? <Infotable  handleRemove={handleRemove} peoples={peopleToShow}/>
+        ? <Infotable  handleRemove={handleRemove} handleEdit={handleEdit} peoples={peopleToShow}/>
         :<p>No Contacts Found</p>
       }
       
